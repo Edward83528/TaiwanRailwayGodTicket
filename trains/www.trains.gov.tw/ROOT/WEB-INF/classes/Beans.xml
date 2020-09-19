@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd ">
+
+	<!-- Spring JdbcTemplate 設置 -->
+	<!-- Initialization for data source -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/demo" />
+		<property name="username" value="root" />
+		<property name="password" value="zxcvbnm0351" />
+	</bean>
+
+	<!-- 定義 最新消息 NewsJDBCTemplate bean -->
+	<bean id="NewsJDBCTemplate" class="com.tutorialspoint.NewsJDBCTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- 定義 車次 TrainsJDBCTemplate bean -->
+	<bean id="TrainsJDBCTemplate" class="com.tutorialspoint.TrainsJDBCTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- 定義 車站動態 StationDynamicJDBCTemplate bean -->
+	<bean id="StationDynamicJDBCTemplate" class="com.tutorialspoint.StationDynamicJDBCTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- 定義 車站 StationJDBCTemplate bean -->
+	<bean id="StationJDBCTemplate" class="com.tutorialspoint.StationJDBCTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- 定義 問與答 FAQJDBCTemplate bean -->
+	<bean id="FAQJDBCTemplate" class="com.tutorialspoint.FAQJDBCTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+
+
+</beans>
